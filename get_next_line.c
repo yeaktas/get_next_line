@@ -6,7 +6,7 @@
 /*   By: yaktas <yaktas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 13:09:14 by yaktas            #+#    #+#             */
-/*   Updated: 2022/04/11 13:47:27 by yaktas           ###   ########.fr       */
+/*   Updated: 2022/04/12 17:14:24 by yaktas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char *satiralmaca(int fd, char *asildizi)
 char	*get_next_line(int fd)
 {
 	static char *asildizi;
-	char *line;
+	char *satir;
 
 	if(fd < 0 || BUFFER_SIZE < 1)
 		return ;
@@ -47,5 +47,7 @@ char	*get_next_line(int fd)
 
 int main()
 {
-	
+	open("text.txt", 0);
+	int fd = -1;
+	printf("%s", get_next_line(fd));
 }
