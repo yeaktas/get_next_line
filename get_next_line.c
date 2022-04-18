@@ -6,48 +6,47 @@
 /*   By: yaktas <yaktas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 13:09:14 by yaktas            #+#    #+#             */
-/*   Updated: 2022/04/12 17:14:24 by yaktas           ###   ########.fr       */
+/*   Updated: 2022/04/18 13:07:06 by yaktas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char *satiralmaca(int fd, char *asildizi)
+char	*satiralmaca(int fd, char *asildizi)
 {
-	char *buff;
-	int read_test;
+	char	*buff;
+	int		okunanbyte;
 
 	buff = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if(!buff)
+	if (!buff)
 		return ;
-	read_test = 1;
-	while(!ft_strchr(asildizi, '\n') && read_test != 0)
+	okunanbyte = 1;
+	while (ft_strchr(asildizi, '\n') && okunanbyte != 0)
 	{
-		read_test = read(fd, buff, BUFFER_SIZE);
-		if(read_test == -1)
+		okunanbyte = read(fd, buff, BUFFER_SIZE);
+		if (okunanbyte == -1)
 		{
 			free(buff);
 			return ;
 		}
-		buff[read_test] = '\0';
-		
-
+		buff[okunanbyte] = '\0';
+		asildizi = ft_strjoin(asildizi, buff);
 	}
+	free(buff);
+	return (asildizi);
 }
 
 char	*get_next_line(int fd)
 {
-	static char *asildizi;
-	char *satir;
+	static char	*asildizi;
+	char		*satir;
 
-	if(fd < 0 || BUFFER_SIZE < 1)
+	if (fd < 0 || BUFFER_SIZE < 1)
 		return ;
 	asildizi = satiralmaca(fd, asildizi);
-}
-
-int main()
-{
-	open("text.txt", 0);
-	int fd = -1;
-	printf("%s", get_next_line(fd));
+	if (!asildizi)
+		return ;
+	satir = ft_get_line(asildizi);
+	asildizi = ft_new_left_str(asildizi);
+	return (satir);
 }
