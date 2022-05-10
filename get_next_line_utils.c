@@ -6,59 +6,66 @@
 /*   By: yaktas <yaktas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 13:24:10 by yaktas            #+#    #+#             */
-/*   Updated: 2022/04/18 12:57:24 by yaktas           ###   ########.fr       */
+/*   Updated: 2022/05/09 14:42:02 by yaktas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-size_t	ft_strlen(const char *s)
+//uzunluk return ediyor.
+size_t	ft_strlen(char *s)
 {
 	size_t	i;
 
 	i = 0;
+	if (!s)
+		return (0);
 	while (s[i] != '\0')
 		i++;
 	return (i);
 }
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr(char *s, int c)
 {
-	int	s_len;
+	int	i;
 
-	s_len = ft_strlen(s);
-	while (s_len >= 0)
-	{
-		if (*s == (char)c)
-			return ((char *)s);
-		s++;
-		s_len--;
-	}
-	return (NULL);
-}
-
-char	*ft_strjoin(char const *s1, char const *s2)
-{
-	char	*m;
-	size_t	i;
-	size_t	j;
-
-	if (!s1 || !s2)
-		return (NULL);
-	m = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	i = 0;
-	j = 0;
-	if (!m)
-		return (NULL);
-	while (s1[i])
+	if (!s)
+		return (0);
+	if (c == '\0')
+		return ((char *)&s[ft_strlen(s)]);
+	while (s[i] != '\0')
 	{
-		m[i] = s1[i];
+		if (s[i] == (char) c)
+			return ((char *)&s[i]);
 		i++;
 	}
-	while (s2[j])
-		m[i++] = s2[j++];
-	m[i] = '\0';
-	return (m);
+	return (0);
+}
+//iki stringi birlestirip return ediyor.
+char	*ft_strjoin(char *left_str, char *buff)
+{
+	size_t	i;
+	size_t	j;
+	char	*str;
+
+	if (!left_str)
+	{
+		left_str = (char *)malloc(1 * sizeof(char));
+		left_str[0] = '\0';
+	}
+	str = malloc(sizeof(char) * ((ft_strlen(left_str) + ft_strlen(buff)) + 1));
+	if (str == NULL)
+		return (NULL);
+	i = -1;
+	j = 0;
+	//if (left_str)
+	while (left_str[++i] != '\0')
+		str[i] = left_str[i];
+	while (buff[j] != '\0')
+		str[i++] = buff[j++];
+	str[ft_strlen(left_str) + ft_strlen(buff)] = '\0';
+	free(left_str);
+	return (str);
 }
 
 char	*ft_get_line(char *left_str)
