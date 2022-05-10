@@ -6,12 +6,13 @@
 /*   By: yaktas <yaktas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 13:09:14 by yaktas            #+#    #+#             */
-/*   Updated: 2022/05/09 12:16:28 by yaktas           ###   ########.fr       */
+/*   Updated: 2022/05/10 16:56:03 by yaktas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
+//ilk satiri /n bulana kadar okur. buffer size in durumuna 
+//gore siradaki satirdan karakter alabilir.
 char	*ft_read_to_left_str(int fd, char *left_str)
 {
 	char	*buff;
@@ -57,6 +58,6 @@ char	*get_next_line(int fd)
 /*  int main()
  {
  	int fd;
- 	fd = open("dosya.txt",O_RDONLY);
+ 	fd = open("a.txt",O_RDONLY);
  	printf("%s", get_next_line(fd));
 } */

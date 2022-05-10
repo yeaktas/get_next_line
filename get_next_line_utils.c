@@ -6,7 +6,7 @@
 /*   By: yaktas <yaktas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 13:24:10 by yaktas            #+#    #+#             */
-/*   Updated: 2022/05/09 14:42:02 by yaktas           ###   ########.fr       */
+/*   Updated: 2022/05/10 16:57:55 by yaktas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ char	*ft_strjoin(char *left_str, char *buff)
 		return (NULL);
 	i = -1;
 	j = 0;
-	//if (left_str)
 	while (left_str[++i] != '\0')
 		str[i] = left_str[i];
 	while (buff[j] != '\0')
@@ -67,7 +66,7 @@ char	*ft_strjoin(char *left_str, char *buff)
 	free(left_str);
 	return (str);
 }
-
+//sadece ilk satiri aliyor.
 char	*ft_get_line(char *left_str)
 {
 	int		i;
