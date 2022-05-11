@@ -6,12 +6,12 @@
 /*   By: yaktas <yaktas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 13:24:10 by yaktas            #+#    #+#             */
-/*   Updated: 2022/05/10 16:57:55 by yaktas           ###   ########.fr       */
+/*   Updated: 2022/05/11 14:22:36 by yaktas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-//uzunluk return ediyor.
+//gelen stringin uzunlugunu return ediyor.
 size_t	ft_strlen(char *s)
 {
 	size_t	i;
@@ -41,6 +41,7 @@ char	*ft_strchr(char *s, int c)
 	}
 	return (0);
 }
+
 //iki stringi birlestirip return ediyor.
 char	*ft_strjoin(char *left_str, char *buff)
 {
@@ -66,6 +67,7 @@ char	*ft_strjoin(char *left_str, char *buff)
 	free(left_str);
 	return (str);
 }
+
 //sadece ilk satiri aliyor.
 char	*ft_get_line(char *left_str)
 {
@@ -95,6 +97,7 @@ char	*ft_get_line(char *left_str)
 	return (str);
 }
 
+//sıradaki satirda karakter kalmissa kalan karakterleri yolluyor.
 char	*ft_new_left_str(char *left_str)
 {
 	int		i;
